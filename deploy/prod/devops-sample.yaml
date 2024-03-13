@@ -7,7 +7,7 @@ metadata:
   namespace: ai-app01
 spec:
   progressDeadlineSeconds: 600
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: maven-demo
