@@ -6,7 +6,6 @@ metadata:
   name: maven-demo
   namespace: ai-app01
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
   selector:
     matchLabels:
@@ -36,7 +35,7 @@ spec:
             failureThreshold: 30
             periodSeconds: 5
           imagePullPolicy: Always
-          name: ks
+          name: maven-demo
           ports:
             - containerPort: 8080
               protocol: TCP
