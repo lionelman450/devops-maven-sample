@@ -51,3 +51,29 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: maven-demo-svc
+  namespace: ai-app01
+  labels:
+    version: v1
+    app: maven-demo
+  annotations:
+    kubesphere.io/serviceType: statelessservice
+    prometheus.io/scrape: 'true'
+spec:
+  sessionAffinity: None
+  selector:
+    app: maven-demo
+  ports:
+  - name: http-0
+    protocol: TCP
+    port: 8080         #svc的端口
+    targetPort: 8080   #pod内部的端口
+  type: NodePort
+  clusterIP:
+  clusterIPs:
+  internalTrafficPolicy: Cluster
+  externalTrafficPolicy: Cluster
